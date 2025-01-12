@@ -20,10 +20,10 @@ const LoginPage = () => {
                 <div className="p-5">
                     <div className="logo d-flex gap-4 align-items-center mt-5">
                         <img src={logo} alt="logo"/>
-                        <h1 className="m-0 fw-bold">Green Shadow</h1>
+                        <h1 className="m-0 fw-medium">Green Shadow</h1>
                     </div>
                     <div className="form-container mt-5">
-                        <h3 className="fw-bold">Sign in your account</h3>
+                        <h3 className="fw-medium">Sign in your account</h3>
                         <h4 className="mt-2 fw-medium">"Sign in to start managing your farm today!"</h4>
 
                         <div className="mt-5">
@@ -31,7 +31,7 @@ const LoginPage = () => {
                                 <div className="form-floating mb-3 w-100">
                                     <input
                                         type="email"
-                                        className="form-control email-input fw-semibold border-0"
+                                        className="form-control email-input fw-bold border-0"
                                         id="floatingInput"
                                         placeholder="name@example.com"
                                     />
@@ -40,7 +40,7 @@ const LoginPage = () => {
                                 <div className="form-floating position-relative w-100 border-0">
                                     <input
                                         type={isPasswordVisible ? 'text' : 'password'}
-                                        className="form-control password-input fw-semibold"
+                                        className="form-control password-input fw-bold"
                                         id="floatingPassword"
                                         placeholder="Password"
                                     />
@@ -89,7 +89,7 @@ const LoginPage = () => {
                         </button>
                         <h5 className="fw-semibold">
                             Don’t have an account ?
-                            <Link to="#" className="text-decoration-none ms-1">Register</Link> Now.
+                            <Link to="/register" className="text-decoration-none ms-1">Register</Link> Now.
                         </h5>
                     </div>
                 </div>
