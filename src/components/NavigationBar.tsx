@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import dashboard_icon from '../assets/icon/dashboard_icon.svg';
 import staff_icon from '../assets/icon/staff_icon.svg';
 import vehicle from '../assets/icon/vehicle.svg';
@@ -17,6 +18,7 @@ import monitorLogHover from '../assets/icon/hover/monitor_log.svg';
 import staffHover from '../assets/icon/hover/staff_icon.svg';
 import dashboardHover from '../assets/icon/hover/dashboard_icon.svg';
 
+// Define icon and navigation types
 interface Icon {
     default: string;
     hover: string;
@@ -25,11 +27,21 @@ interface Icon {
 const icons: Record<string, Icon> = {
     'dashboard-icon': { default: dashboard_icon, hover: dashboardHover },
     'staff-icon': { default: staff_icon, hover: staffHover },
-    'vehicle': { default: vehicle, hover: vehicleHover },
+    vehicle: { default: vehicle, hover: vehicleHover },
     'field-icon': { default: field_icon, hover: fieldHover },
-    'rqu_icon': { default: rqu_icon, hover: rquHover },
-    'crop_icon': { default: crop_icon, hover: cropHover },
-    'monitor_log': { default: monitor_log, hover: monitorLogHover },
+    rqu_icon: { default: rqu_icon, hover: rquHover },
+    crop_icon: { default: crop_icon, hover: cropHover },
+    monitor_log: { default: monitor_log, hover: monitorLogHover },
+};
+
+const navigations: Record<string, string> = {
+    'dashboard-icon': 'home',
+    'staff-icon': 'staff_management',
+    vehicle: 'vehicle_management',
+    'field-icon': 'field_management',
+    rqu_icon: 'rqu_management',
+    crop_icon: 'crop_management',
+    monitor_log: 'monitor_log',
 };
 
 const NavigationBar = () => {
@@ -49,13 +61,12 @@ const NavigationBar = () => {
     };
 
     return (
-        <>
-            <div className="nav-bar text-center">
-                <img className="mt-5" src={logo} alt="logo" />
-                <div className="d-flex flex-column align-items-center justify-content-center h-75 gap-5 mt-5">
-                    {Object.keys(icons).map((key) => (
+        <div className="nav-bar text-center">
+            <img className="mt-5" src={logo} alt="logo" />
+            <div className="d-flex flex-column align-items-center justify-content-center h-75 gap-5 mt-5">
+                {Object.keys(icons).map((key) => (
+                    <Link to={`/dashboard/${navigations[key]}`} key={key}>
                         <img
-                            key={key}
                             className={key}
                             src={
                                 activeButton === key || hoveredButton === key
@@ -65,22 +76,22 @@ const NavigationBar = () => {
                             onMouseEnter={() => handleMouseEnter(key)}
                             onMouseLeave={handleMouseLeave}
                             onClick={() => handleClick(key)}
-                            alt={key}
+                            alt={`${key.replace('-', ' ')} icon`}
                         />
-                    ))}
-                </div>
-                <div>
-                    <img
-                        className="log-out-btn h-auto"
-                        src={log_out}
-                        onMouseEnter={() => handleMouseEnter('log-out-btn')}
-                        onMouseLeave={handleMouseLeave}
-                        onClick={() => handleClick('log-out-btn')}
-                        alt="log out"
-                    />
-                </div>
+                    </Link>
+                ))}
             </div>
-        </>
+            <div>
+                <img
+                    className="log-out-btn h-auto"
+                    src={log_out}
+                    onMouseEnter={() => handleMouseEnter('log-out-btn')}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={() => handleClick('log-out-btn')}
+                    alt="log out icon"
+                />
+            </div>
+        </div>
     );
 };
 

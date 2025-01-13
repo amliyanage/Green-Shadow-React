@@ -5,6 +5,7 @@ import RegisterPage from "./pages/RegisterPage.tsx";
 import {ToastContainer} from "react-toastify";
 import RootLayout from "./components/RootLayout.tsx";
 import Home from "./components/Home.tsx";
+import StaffWall from "./components/StaffWall.tsx";
 
 function App() {
 
@@ -16,8 +17,9 @@ function App() {
                 <Route path="/" element={<LoginPage/>} />
                 <Route path="/register" element={<RegisterPage />} />
 
-                <Route path="/dashbaord" element={ <RootLayout /> } >
+                <Route path="/dashboard" element={ <RootLayout /> } >
                     <Route path="home" element={ <Home /> } />
+                    <Route path="staff_management" element={ <StaffWall /> } />
                 </Route>
             </Routes>
           </BrowserRouter>
