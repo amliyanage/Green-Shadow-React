@@ -1,5 +1,5 @@
-import profile_icon from '../assets/icon/profile_icon.png'
-import '../css/components/Home.css'
+import profile_icon from '../../assets/icon/profile_icon.png'
+import '../../css/components/Home.css'
 
 const Home = () => {
     return (

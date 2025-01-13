@@ -4,8 +4,9 @@ import LoginPage from "./pages/LoginPage.tsx";
 import RegisterPage from "./pages/RegisterPage.tsx";
 import {ToastContainer} from "react-toastify";
 import RootLayout from "./components/RootLayout.tsx";
-import Home from "./components/Home.tsx";
-import StaffWall from "./components/StaffWall.tsx";
+import Home from "./components/wall/Home.tsx";
+import StaffWall from "./components/wall/StaffWall.tsx";
+import VehicleWall from "./components/wall/VehicleWall.tsx";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/dashboard" element={ <RootLayout /> } >
                     <Route path="home" element={ <Home /> } />
                     <Route path="staff_management" element={ <StaffWall /> } />
+                    <Route path="vehicle_management" element={ <VehicleWall /> } />
                 </Route>
             </Routes>
           </BrowserRouter>

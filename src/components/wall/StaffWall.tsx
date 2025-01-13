@@ -1,6 +1,5 @@
-import '../css/components/StaffWall.css'
-import WallHeader from "./WallHeader.tsx";
-import Table from "./Table.tsx";
+import WallHeader from "../WallHeader.tsx";
+import Table from "../Table.tsx";
 
 const StaffWall = () => {
     const dataHeaders = [ "Staff Id" , "First Name" , "Last Name" , "Gender" , "Contact No" ]

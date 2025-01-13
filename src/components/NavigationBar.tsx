@@ -18,7 +18,6 @@ import monitorLogHover from '../assets/icon/hover/monitor_log.svg';
 import staffHover from '../assets/icon/hover/staff_icon.svg';
 import dashboardHover from '../assets/icon/hover/dashboard_icon.svg';
 
-// Define icon and navigation types
 interface Icon {
     default: string;
     hover: string;
