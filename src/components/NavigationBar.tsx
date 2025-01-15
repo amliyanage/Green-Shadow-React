@@ -38,7 +38,7 @@ const navigations: Record<string, string> = {
     'staff-icon': 'staff_management',
     vehicle: 'vehicle_management',
     'field-icon': 'field_management',
-    rqu_icon: 'rqu_management',
+    rqu_icon: 'equ_management',
     crop_icon: 'crop_management',
     monitor_log: 'monitor_log',
 };
