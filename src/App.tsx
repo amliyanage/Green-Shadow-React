@@ -10,6 +10,7 @@ import VehicleWall from "./components/wall/VehicleWall.tsx";
 import FieldWall from "./components/wall/FieldWall.tsx";
 import EquWall from "./components/wall/EquWall.tsx";
 import CropWall from "./components/wall/CropWall.tsx";
+import CropDataWall from "./components/wall/CropDataWall.tsx";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
                     <Route path="field_management" element={ <FieldWall /> } />
                     <Route path="equ_management" element={ <EquWall /> } />
                     <Route path="crop_management" element={ <CropWall /> } />
+                    <Route path="monitor_log" element={ <CropDataWall /> } />
                 </Route>
             </Routes>
           </BrowserRouter>
