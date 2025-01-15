@@ -1,4 +1,5 @@
 import style from "../css/components/Table.module.css";
+import {dataRefactor} from "../util/dataRefactor.ts";
 interface TableProps {
     headersData: string[];
     bodyData: string[][];
@@ -6,19 +7,26 @@ interface TableProps {
 
 const Table = ({headersData,bodyData} : TableProps) => {
 
-    const dataRefactor = (data:string,maxLength:number) => {
-        if (data.length > maxLength) {
-            return data.slice(0,maxLength) + '...'
-        }
-        return data
-    }
+    const calculateGrid = () => {
+        const css : string[] = [];
+        headersData?.forEach((_, index) => {
+            if (index === 0) {
+                css.push("2fr ")// First column
+            }else {
+                css.push("1fr "); // Middle columns
+            }
+        });
+        css.push("1.5fr "); // Last column
+        console.log(css)
+        return css.join("");
+    };
 
     return (
         <>
             <div>
                 <div className={`table mt-5 ${style.table}`}>
                     <div className={`${style.tableHead}`}>
-                        <div>
+                        <div  style={ { gridTemplateColumns : calculateGrid() } }>
                             {
                                 headersData?.map((header, index) => (
                                     <h5 key={index}>{header}</h5>

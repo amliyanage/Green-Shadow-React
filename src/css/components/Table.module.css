@@ -2,7 +2,7 @@
 .tableBody > div {
     background: #fff;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.5fr;
+    /*grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.5fr;*/
     text-align: center;
     padding: 9px 25px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.06);

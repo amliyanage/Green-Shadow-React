@@ -7,6 +7,7 @@ import RootLayout from "./components/RootLayout.tsx";
 import Home from "./components/wall/Home.tsx";
 import StaffWall from "./components/wall/StaffWall.tsx";
 import VehicleWall from "./components/wall/VehicleWall.tsx";
+import FieldWall from "./components/wall/FieldWall.tsx";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
                     <Route path="home" element={ <Home /> } />
                     <Route path="staff_management" element={ <StaffWall /> } />
                     <Route path="vehicle_management" element={ <VehicleWall /> } />
+                    <Route path="field_management" element={ <FieldWall /> } />
                 </Route>
             </Routes>
           </BrowserRouter>
