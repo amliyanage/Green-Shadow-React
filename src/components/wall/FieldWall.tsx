@@ -1,5 +1,5 @@
 import WallHeader from "../WallHeader.tsx";
-import CardSet from "../../CardSet.tsx";
+import CardSet from "../CardSet.tsx";
 
 const FieldWall = () => {
     return (
