@@ -4,4 +4,5 @@ export interface Vehicle {
     category: string;
     fuelType: string;
     remarks: string;
+    assignedDriver: string;
 }
