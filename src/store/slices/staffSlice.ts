@@ -27,9 +27,12 @@ const staffSlice = createSlice({
                 ? action.payload
                 : staff
             );
+        } ,
+        deleteStaff(state, action : PayloadAction<string>){
+            return state.filter((staff: Staff) => staff.staffId !== action.payload)
         }
     }
 })
 
-export const {saveStaff , updateStaff} = staffSlice.actions
+export const {saveStaff , updateStaff , deleteStaff} = staffSlice.actions
 export default staffSlice.reducer
