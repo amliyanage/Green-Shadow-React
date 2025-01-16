@@ -17,6 +17,6 @@ export const convertVehicleArrayTo2DArray = (vehicleArray : Vehicle[]) => {
         vehicle.licensePlateNo ?? "",
         vehicle.category ?? "",
         vehicle.fuelType ?? "",
-        vehicle.assignedDriver === "" ? "Available" : "Not Available",
+        vehicle.assignedDriver === "" ? "Available" : "Assigned",
     ])
 }

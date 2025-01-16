@@ -19,7 +19,8 @@ const AddVehiclePopup = ({ closePopupAction } : AddVehiclePopupProps) => {
         category: "",
         fuelType: "",
         remarks: "",
-        vehicleId: ""
+        vehicleId: generateUUID("VEHICLE"),
+        assignedDriver: ""
     });
 
     const dispatch = useDispatch();
@@ -39,7 +40,6 @@ const AddVehiclePopup = ({ closePopupAction } : AddVehiclePopupProps) => {
         }
 
         try {
-            setVehicle({...vehicle, vehicleId: generateUUID("VEHICLE")})
             dispatch(saveVehicle(vehicle))
             toast.success("Vehicle saved successfully.")
         } catch (error) {

@@ -14,7 +14,7 @@ interface AddStaffPopupProps {
 
 const AddStaffPopup = ({ closePopupAction }: AddStaffPopupProps) => {
     const [staffMember, setStaffMember] = useState<Staff>({
-        staffId: "",
+        staffId: generateUUID("STAFF"),
         firstName: "",
         lastName: "",
         designation: "",
@@ -43,7 +43,6 @@ const AddStaffPopup = ({ closePopupAction }: AddStaffPopupProps) => {
             return
         }
         try {
-            setStaffMember({...staffMember, staffId: generateUUID("STAFF")})
             dispatch(saveStaff(staffMember))
             toast.success("Staff member saved successfully.")
         } catch (error) {
