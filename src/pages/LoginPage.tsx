@@ -1,17 +1,42 @@
 import '../css/Pages/LoginPage.css'
 import logo from '../assets/logo.png'
 import loginPageImg from '../assets/loginPageImg.png'
-import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../store/store.ts";
-import {togglePasswordVisibility} from "../store/slices/passwordSlice.ts";
+import {Link, useNavigate} from "react-router-dom";
+import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {loginUser} from "../store/slices/userSlice.ts";
+import {toast} from "react-toastify";
 
 const LoginPage = () => {
-    const dispatch = useDispatch()
-    const isPasswordVisible = useSelector((state: RootState) => state.passwordVisible.visible)
+
+    const dispatch = useDispatch();
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
     const togglePassword = () => {
-        dispatch(togglePasswordVisibility())
+        setIsPasswordVisible(!isPasswordVisible);
+    }
+
+    const handleLogin = () => {
+        try{
+            if (email === "" || password === "") {
+                toast.error("Please fill all fields")
+                console.log("Please fill all fields")
+                return
+            }
+            if (!isCheckboxChecked) {
+                toast.error("Please agree to all terms")
+                return
+            }
+            dispatch(loginUser({email, password}))
+            navigate('/dashboard/home')
+        } catch (e) {
+            toast.error("Wrong email or password")
+            console.log(e)
+        }
     }
 
     return (
@@ -34,6 +59,7 @@ const LoginPage = () => {
                                         className="form-control email-input fw-bold border-0"
                                         id="floatingInput"
                                         placeholder="name@example.com"
+                                        onChange={(e) => setEmail(e.target.value)}
                                     />
                                     <label htmlFor="floatingInput">Email address</label>
                                 </div>
@@ -43,6 +69,7 @@ const LoginPage = () => {
                                         className="form-control password-input fw-bold"
                                         id="floatingPassword"
                                         placeholder="Password"
+                                        onChange={(e) => setPassword(e.target.value)}
                                     />
                                     <label htmlFor="floatingPassword">Password</label>
                                     <button
@@ -60,7 +87,9 @@ const LoginPage = () => {
                             <div className="d-flex mt-5">
                                 <label className="checkbox-btn d-block position-relative pointer-event p-3">
                                     <label className="pointer-event" htmlFor="checkbox"></label>
-                                    <input id="checkbox" type="checkbox" className="position-absolute opacity-0 pointer-event"/>
+                                    <input id="checkbox" type="checkbox" className="position-absolute opacity-0 pointer-event"
+                                        onChange={() => setIsCheckboxChecked(!isCheckboxChecked)}
+                                    />
                                     <span className="checkmark position-absolute top-0 start-0"></span>
                                 </label>
                                 <h4 className="m-0 term fw-semibold">
@@ -70,7 +99,9 @@ const LoginPage = () => {
                         </div>
                     </div>
                     <div className="d-flex align-items-center justify-content-between mt-5">
-                        <button className="cssbuttons-io-button text-white fw-bold border-0 d-flex align-items-center overflow-hidden position-relative pointer-event">
+                        <button className="cssbuttons-io-button text-white fw-bold border-0 d-flex align-items-center overflow-hidden position-relative pointer-event"
+                            onClick={handleLogin}
+                        >
                             Sign In
                             <div className="icon position-absolute d-flex align-items-center justify-content-center">
                                 <svg
