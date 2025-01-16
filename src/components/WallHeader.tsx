@@ -2,9 +2,10 @@ import style from "../css/components/WallHeader.module.css";
 
 interface WallHeaderProps {
     title: string;
+    addPopupAction: () => void;
 }
 
-const WallHeader = ({ title }: WallHeaderProps) => {
+const WallHeader = ({ title , addPopupAction }: WallHeaderProps) => {
     return (
         <>
             <h1 className={style.h1}>{title}</h1>
@@ -35,6 +36,7 @@ const WallHeader = ({ title }: WallHeaderProps) => {
                 </div>
                 <button
                     className={`border-0 p-2 d-flex align-items-center gap-2 ${style.addMemberBtn}`}
+                    onClick={addPopupAction}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
