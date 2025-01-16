@@ -1,5 +1,5 @@
 import {Vehicle} from "../../model/Vehicle.ts";
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 const initialState: Vehicle[] = []
 
@@ -16,8 +16,8 @@ const vehicleSlice = createSlice({
                 : vehicle
             );
         },
-        deleteVehicle: (state, action) => {
-            return state.filter((vehicle: Vehicle) => vehicle.vehicleId !== action.payload.vehicleId);
+        deleteVehicle: (state, action : PayloadAction<string>) => {
+            return state.filter((vehicle: Vehicle) => vehicle.vehicleId !== action.payload);
         }
     }
 })

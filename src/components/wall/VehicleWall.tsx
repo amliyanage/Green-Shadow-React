@@ -2,11 +2,13 @@ import WallHeader from "../WallHeader.tsx";
 import Table from "../Table.tsx";
 import AddVehiclePopup from "../popups/vehicle/AddVehiclePopup.tsx";
 import {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Vehicle} from "../../model/Vehicle.ts";
 import {convertVehicleArrayTo2DArray} from "../../util/ArrayTo2DArray.ts";
 import UpdateVehiclePopup from "../popups/vehicle/UpdateVehiclePopup.tsx";
 import ViewVehiclePopup from "../popups/vehicle/ViewVehiclePopup.tsx";
+import Swal from "sweetalert2";
+import {deleteVehicle} from "../../store/slices/VehicleSlice.ts";
 
 const VehicleWall = () => {
     const dataHeaders = [ "Vehicle Code" , "License Plate Nu." , "Category" , "Fuel Type" , "Status" ]
@@ -17,6 +19,7 @@ const VehicleWall = () => {
     const [search, setSearch] = useState('')
     const [vehicle2DArray, setVehicle2DArray] = useState(convertVehicleArrayTo2DArray(vehicle))
     const [targetVehicle, setTargetVehicle] = useState<string>("")
+    const dispatch = useDispatch()
 
     const handleAddVehiclePopup = () => {
         setAddVehiclePopup(!addVehiclePopup)
@@ -42,6 +45,26 @@ const VehicleWall = () => {
         setVehicle2DArray(filteredStaff);
     }, [search, vehicle])
 
+    const handleDeleteVehicle = (id:string) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to delete this vehicle?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "Cancel",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(deleteVehicle(id))
+                Swal.fire("Deleted!", "Vehicle has been deleted.", "success");
+            } else {
+                Swal.fire("Cancelled", "Vehicle deletion cancelled", "info");
+            }
+        })
+    }
+
     return (
         <>
             {addVehiclePopup && <AddVehiclePopup closePopupAction={handleAddVehiclePopup}/>}
@@ -49,7 +72,7 @@ const VehicleWall = () => {
             {viewVehiclePopup && <ViewVehiclePopup closePopupAction={handleViewVehiclePopup} targetStaffId={targetVehicle}/>}
             <div className="w-100 p-5 bg-transparent" id="staff-wall">
                 <WallHeader title={"Vehicle Management"} addPopupAction={handleAddVehiclePopup} searchAction={setSearch}/>
-                <Table headersData={dataHeaders} bodyData={vehicle2DArray} updatePopupAction={handleUpdateVehiclePopup} viewPopupAction={handleViewVehiclePopup}/>
+                <Table headersData={dataHeaders} bodyData={vehicle2DArray} updatePopupAction={handleUpdateVehiclePopup} viewPopupAction={handleViewVehiclePopup} deletePopupAction={handleDeleteVehicle}/>
             </div>
         </>
     )
