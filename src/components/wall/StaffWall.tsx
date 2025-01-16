@@ -8,6 +8,7 @@ import {convertStaffArrayTo2DArray} from "../../util/ArrayTo2DArray.ts";
 import UpdateStaffPopup from "../popups/UpdateStaffPopup.tsx";
 import Swal from 'sweetalert2';
 import {deleteStaff} from "../../store/slices/staffSlice.ts";
+import ViewStaffPopup from "../popups/ViewStaffPopup.tsx";
 
 const StaffWall = () => {
     const dataHeaders = [ "Staff Id" , "First Name" , "Last Name" , "Gender" , "Contact No" ]
@@ -16,6 +17,7 @@ const StaffWall = () => {
     const [search, setSearch] = useState('')
     const [staff2DArray, setStaff2DArray] = useState(convertStaffArrayTo2DArray(staff))
     const [updateStaffPopup, setUpdateStaffPopup] = useState(false)
+    const [viewStaffPopup, setViewStaffPopup] = useState(false)
     const [targetStaff, setTargetStaff] = useState<string>("")
     const dispatch = useDispatch()
 
@@ -48,6 +50,11 @@ const StaffWall = () => {
         })
     }
 
+    const handleViewStaffPopup = (id:string) => {
+        setViewStaffPopup(!viewStaffPopup)
+        setTargetStaff(id)
+    }
+
     useEffect(() => {
         const filteredStaff = convertStaffArrayTo2DArray(staff).filter((staff: string[]) => {
             return staff.some((staffData: string) =>
@@ -62,9 +69,10 @@ const StaffWall = () => {
         <>
             {addStaffPopup && <AddStaffPopup closePopupAction={handleAddStaffPopup} />}
             {updateStaffPopup && <UpdateStaffPopup closePopupAction={handleUpdateStaffPopup} targetStaffId={targetStaff} />}
+            {viewStaffPopup && <ViewStaffPopup targetStaffId={targetStaff} closePopupAction={handleViewStaffPopup} />}
             <div className="w-100 p-5 bg-transparent" id="staff-wall">
                 <WallHeader title={"Staff Management"} addPopupAction={handleAddStaffPopup} searchAction={setSearch} />
-                <Table headersData={dataHeaders} bodyData={staff2DArray} updatePopupAction={handleUpdateStaffPopup} deletePopupAction={handelDeleteStaff} />
+                <Table headersData={dataHeaders} bodyData={staff2DArray} updatePopupAction={handleUpdateStaffPopup} deletePopupAction={handelDeleteStaff} viewPopupAction={handleViewStaffPopup} />
             </div>
         </>
     )

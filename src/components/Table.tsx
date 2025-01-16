@@ -5,9 +5,10 @@ interface TableProps {
     bodyData: string[][];
     updatePopupAction?: (id:string) => void;
     deletePopupAction?: (id:string) => void;
+    viewPopupAction?: (id:string) => void;
 }
 
-const Table = ({headersData,bodyData , updatePopupAction , deletePopupAction} : TableProps) => {
+const Table = ({headersData,bodyData , updatePopupAction , deletePopupAction , viewPopupAction} : TableProps) => {
 
     const calculateGrid = () => {
         const css : string[] = [];
@@ -71,7 +72,7 @@ const Table = ({headersData,bodyData , updatePopupAction , deletePopupAction} : 
                                             fill="#9A9A9A"
                                         />
                                     </svg>
-                                    <svg
+                                    <svg onClick={ () => viewPopupAction ? viewPopupAction(data[0]) : ""}
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="20"
                                         height="14"
