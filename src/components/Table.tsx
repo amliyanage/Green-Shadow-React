@@ -3,9 +3,10 @@ import {dataRefactor} from "../util/dataRefactor.ts";
 interface TableProps {
     headersData: string[];
     bodyData: string[][];
+    updatePopupAction?: (id:string) => void;
 }
 
-const Table = ({headersData,bodyData} : TableProps) => {
+const Table = ({headersData,bodyData , updatePopupAction} : TableProps) => {
 
     const calculateGrid = () => {
         const css : string[] = [];
@@ -45,7 +46,7 @@ const Table = ({headersData,bodyData} : TableProps) => {
                                 <div
                                     className={`d-flex justify-content-center gap-4 align-items-center ${style.action}`}
                                 >
-                                    <svg
+                                    <svg onClick={() => updatePopupAction ? updatePopupAction(data[0]) : ""}
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="16"
                                         height="22"
