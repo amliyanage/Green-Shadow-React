@@ -37,7 +37,7 @@ const Table = ({headersData,bodyData} : TableProps) => {
                     </div>
                     <div className={style.tableBody}>
                         { bodyData?.map((data) => (
-                            <div>
+                            <div style={ { gridTemplateColumns : calculateGrid() } }>
                                 <h5>{ dataRefactor( data[0] ,20 ) }</h5>
                                 <h5>{ dataRefactor( data[1] , 10 ) }</h5>
                                 <h5>{ dataRefactor( data[2] , 10 ) }</h5>
