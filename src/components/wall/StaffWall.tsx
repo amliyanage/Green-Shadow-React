@@ -1,14 +1,14 @@
 import WallHeader from "../WallHeader.tsx";
 import Table from "../Table.tsx";
-import AddStaffPopup from "../popups/AddStaffPopup.tsx";
+import AddStaffPopup from "../popups/staff/AddStaffPopup.tsx";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Staff} from "../../model/Staff.ts";
 import {convertStaffArrayTo2DArray} from "../../util/ArrayTo2DArray.ts";
-import UpdateStaffPopup from "../popups/UpdateStaffPopup.tsx";
+import UpdateStaffPopup from "../popups/staff/UpdateStaffPopup.tsx";
 import Swal from 'sweetalert2';
 import {deleteStaff} from "../../store/slices/staffSlice.ts";
-import ViewStaffPopup from "../popups/ViewStaffPopup.tsx";
+import ViewStaffPopup from "../popups/staff/ViewStaffPopup.tsx";
 
 const StaffWall = () => {
     const dataHeaders = [ "Staff Id" , "First Name" , "Last Name" , "Gender" , "Contact No" ]

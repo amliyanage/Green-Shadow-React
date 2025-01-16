@@ -1,11 +1,13 @@
 import {configureStore} from "@reduxjs/toolkit";
 import userSlice from "./slices/userSlice.ts";
 import staffSlice from "./slices/staffSlice.ts";
+import vehicleSlice from "./slices/VehicleSlice.ts";
 
 export const store = configureStore({
     reducer: {
         user: userSlice,
-        staff: staffSlice
+        staff: staffSlice,
+        vehicle : vehicleSlice
     }
 })
 

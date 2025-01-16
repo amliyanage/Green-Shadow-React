@@ -1,12 +1,12 @@
-import closeBtn from '../../assets/icon/close-btn.svg';
-import '../../css/components/Popups/StaffPopup.css';
+import closeBtn from '../../../assets/icon/close-btn.svg';
+import '../../../css/components/Popups/StaffPopup.css';
 import React, { useState } from "react";
-import { Staff } from "../../model/Staff";
+import { Staff } from "../../../model/Staff.ts";
 import {useDispatch} from "react-redux";
-import validateStaffMember from "../../util/validation/StaffValidation.ts";
-import {saveStaff} from "../../store/slices/staffSlice.ts";
+import validateStaffMember from "../../../util/validation/StaffValidation.ts";
+import {saveStaff} from "../../../store/slices/staffSlice.ts";
 import {toast} from "react-toastify";
-import {generateUUID} from "../../util/generateUUID.ts";
+import {generateUUID} from "../../../util/generateUUID.ts";
 
 interface AddStaffPopupProps {
     closePopupAction: () => void;

@@ -1,8 +1,8 @@
 import {useSelector} from "react-redux";
-import {RootState} from "../../store/store.ts";
+import {RootState} from "../../../store/store.ts";
 import {useEffect, useState} from "react";
-import {Staff} from "../../model/Staff.ts";
-import closeBtn from '../../assets/icon/close-btn.svg'
+import {Staff} from "../../../model/Staff.ts";
+import closeBtn from '../../../assets/icon/close-btn.svg'
 
 interface ViewStaffPopupProps {
     targetStaffId: string;

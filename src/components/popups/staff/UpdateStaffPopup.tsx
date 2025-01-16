@@ -1,11 +1,11 @@
-import closeBtn from '../../assets/icon/close-btn.svg'
-import '../../css/components/Popups/StaffPopup.css'
+import closeBtn from '../../../assets/icon/close-btn.svg'
+import '../../../css/components/Popups/StaffPopup.css'
 import React, {useEffect, useState} from "react";
-import {Staff} from "../../model/Staff.ts";
+import {Staff} from "../../../model/Staff.ts";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../store/store.ts";
-import validateStaffMember from "../../util/validation/StaffValidation.ts";
-import {updateStaff} from "../../store/slices/staffSlice.ts";
+import {RootState} from "../../../store/store.ts";
+import validateStaffMember from "../../../util/validation/StaffValidation.ts";
+import {updateStaff} from "../../../store/slices/staffSlice.ts";
 import {toast} from "react-toastify";
 
 interface UpdateStaffPopupProps {
