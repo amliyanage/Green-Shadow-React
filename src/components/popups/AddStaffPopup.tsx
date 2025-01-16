@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 import validateStaffMember from "../../util/validation/StaffValidation.ts";
 import {saveStaff} from "../../store/slices/staffSlice.ts";
 import {toast} from "react-toastify";
+import {generateUUID} from "../../util/generateUUID.ts";
 
 interface AddStaffPopupProps {
     closePopupAction: () => void;
@@ -13,6 +14,7 @@ interface AddStaffPopupProps {
 
 const AddStaffPopup = ({ closePopupAction }: AddStaffPopupProps) => {
     const [staffMember, setStaffMember] = useState<Staff>({
+        staffId: "",
         firstName: "",
         lastName: "",
         designation: "",
@@ -41,6 +43,7 @@ const AddStaffPopup = ({ closePopupAction }: AddStaffPopupProps) => {
             return
         }
         try {
+            setStaffMember({...staffMember, staffId: generateUUID("STAFF")})
             dispatch(saveStaff(staffMember))
             toast.success("Staff member saved successfully.")
         } catch (error) {
