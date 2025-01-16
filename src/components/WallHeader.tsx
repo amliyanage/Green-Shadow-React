@@ -1,11 +1,13 @@
 import style from "../css/components/WallHeader.module.css";
+import React from "react";
 
 interface WallHeaderProps {
     title: string;
     addPopupAction: () => void;
+    searchAction: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const WallHeader = ({ title , addPopupAction }: WallHeaderProps) => {
+const WallHeader = ({ title , addPopupAction , searchAction }: WallHeaderProps) => {
     return (
         <>
             <h1 className={style.h1}>{title}</h1>
@@ -15,6 +17,7 @@ const WallHeader = ({ title , addPopupAction }: WallHeaderProps) => {
                         type="text"
                         className={`px-3 search-bar ${style.input}`}
                         placeholder="Search ......"
+                        onChange={ (e) => searchAction(e.target.value) }
                     />
                     <button className={`border-0 rounded-5`}>
                         <svg

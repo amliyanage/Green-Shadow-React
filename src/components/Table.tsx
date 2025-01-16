@@ -17,7 +17,6 @@ const Table = ({headersData,bodyData} : TableProps) => {
             }
         });
         css.push("1.5fr "); // Last column
-        console.log(css)
         return css.join("");
     };
 
