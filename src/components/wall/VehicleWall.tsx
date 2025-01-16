@@ -6,11 +6,13 @@ import {useSelector} from "react-redux";
 import {Vehicle} from "../../model/Vehicle.ts";
 import {convertVehicleArrayTo2DArray} from "../../util/ArrayTo2DArray.ts";
 import UpdateVehiclePopup from "../popups/vehicle/UpdateVehiclePopup.tsx";
+import ViewVehiclePopup from "../popups/vehicle/ViewVehiclePopup.tsx";
 
 const VehicleWall = () => {
     const dataHeaders = [ "Vehicle Code" , "License Plate Nu." , "Category" , "Fuel Type" , "Status" ]
     const [addVehiclePopup, setAddVehiclePopup] = useState(false)
     const [updateVehiclePopup, setUpdateVehiclePopup] = useState(false)
+    const [viewVehiclePopup, setViewVehiclePopup] = useState(false)
     const vehicle = useSelector((state: { vehicle: Vehicle[] }) => state.vehicle)
     const [search, setSearch] = useState('')
     const [vehicle2DArray, setVehicle2DArray] = useState(convertVehicleArrayTo2DArray(vehicle))
@@ -22,6 +24,11 @@ const VehicleWall = () => {
 
     const handleUpdateVehiclePopup = (id:string) => {
         setUpdateVehiclePopup(!updateVehiclePopup)
+        setTargetVehicle(id)
+    }
+
+    const handleViewVehiclePopup = (id:string) => {
+        setViewVehiclePopup(!viewVehiclePopup)
         setTargetVehicle(id)
     }
 
@@ -39,9 +46,10 @@ const VehicleWall = () => {
         <>
             {addVehiclePopup && <AddVehiclePopup closePopupAction={handleAddVehiclePopup}/>}
             {updateVehiclePopup && <UpdateVehiclePopup closePopupAction={handleUpdateVehiclePopup} targetStaffId={targetVehicle}/>}
+            {viewVehiclePopup && <ViewVehiclePopup closePopupAction={handleViewVehiclePopup} targetStaffId={targetVehicle}/>}
             <div className="w-100 p-5 bg-transparent" id="staff-wall">
                 <WallHeader title={"Vehicle Management"} addPopupAction={handleAddVehiclePopup} searchAction={setSearch}/>
-                <Table headersData={dataHeaders} bodyData={vehicle2DArray} updatePopupAction={handleUpdateVehiclePopup}/>
+                <Table headersData={dataHeaders} bodyData={vehicle2DArray} updatePopupAction={handleUpdateVehiclePopup} viewPopupAction={handleViewVehiclePopup}/>
             </div>
         </>
     )
