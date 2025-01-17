@@ -1,7 +1,11 @@
 import {User} from "../../model/User.ts";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-const initialState : User[] = []
+const initialState : User[] = [{
+    email: "admin@gmail.com",
+    password: "12345678",
+    type: "Manager"
+}]
 
 const userSlice = createSlice({
     name: 'user',

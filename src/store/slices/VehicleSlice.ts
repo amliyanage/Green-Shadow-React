@@ -17,7 +17,7 @@ const vehicleSlice = createSlice({
             );
         },
         deleteVehicle: (state, action : PayloadAction<string>) => {
-            return state.filter((vehicle: Vehicle) => vehicle.vehicleId !== action.payload);
+            return state.filter((vehicle: Vehicle) => vehicle.vehicleId !== action.payload );
         }
     }
 })
