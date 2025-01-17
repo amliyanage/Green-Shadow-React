@@ -1,6 +1,5 @@
 import {Field} from "../../model/Field.ts";
 import {dataRefactor} from "../../util/dataRefactor.ts";
-import {base64ToImageURL} from "../../util/base64ToImageURL.ts";
 import style from '../../css/components/cards/FieldCard.module.css'
 
 interface FieldCardProps {
@@ -16,24 +15,23 @@ const FieldCard = ( { fieldData } : FieldCardProps ) => {
                 >
                     <img
                         className="w-100 h-100"
-                        src={`${base64ToImageURL(fieldData.fieldImage1)}`}
-                        alt=""
+                        src={!fieldData.fieldImage1 ? "https://via.placeholder.com/150" : URL.createObjectURL(fieldData.fieldImage1)}
                     />
                 </div>
                 <div className="d-flex justify-content-between mt-3">
                     <div>
                         <h3>Field Code</h3>
-                        <h2>${dataRefactor(fieldData.fieldCode, 20)}</h2>
+                        <h2>{dataRefactor(fieldData.fieldCode, 20)}</h2>
                     </div>
                     <div>
                         <h3>Field Size</h3>
-                        <h2>${fieldData.fieldSize}P</h2>
+                        <h2>{fieldData.fieldSize}P</h2>
                     </div>
                 </div>
                 <div className="mt-3 d-flex justify-content-between align-items-center">
                     <div>
                         <h3>Field Name</h3>
-                        <h2>${dataRefactor(fieldData.fieldName, 15)}</h2>
+                        <h2>{dataRefactor(fieldData.fieldName, 15)}</h2>
                     </div>
                     <div className="d-flex align-items-center gap-3 action">
                         <svg data-id="${element.fieldCode}"
