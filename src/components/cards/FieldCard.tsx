@@ -4,9 +4,10 @@ import style from '../../css/components/cards/FieldCard.module.css'
 
 interface FieldCardProps {
     fieldData: Field;
+    handleUpdateFieldPopup: (field: Field) => void;
 }
 
-const FieldCard = ( { fieldData } : FieldCardProps ) => {
+const FieldCard = ( { fieldData , handleUpdateFieldPopup } : FieldCardProps ) => {
     return(
         <>
             <div className={`p-3 bg-white shadow rounded-4 ${style.fieldCard}`}>
@@ -34,7 +35,7 @@ const FieldCard = ( { fieldData } : FieldCardProps ) => {
                         <h2>{dataRefactor(fieldData.fieldName, 15)}</h2>
                     </div>
                     <div className="d-flex align-items-center gap-3 action">
-                        <svg data-id="${element.fieldCode}"
+                        <svg onClick={() => handleUpdateFieldPopup(fieldData)}
                              xmlns="http://www.w3.org/2000/svg"
                              width="16"
                              height="22"
