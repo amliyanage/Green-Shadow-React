@@ -5,6 +5,7 @@ import vehicleSlice from "./slices/VehicleSlice.ts";
 import fieldSlice from "./slices/FieldSlice.ts";
 import equSlice from "./slices/EquSlice.ts";
 import cropSlice from "./slices/CropSlice.ts";
+import logSlice from "./slices/LogSlice.ts";
 
 export const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
         field: fieldSlice,
         equ : equSlice,
         crop: cropSlice,
+        log : logSlice
     }
 })
 
