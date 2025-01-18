@@ -24,7 +24,7 @@ const CardSet = ({ cardType , cardSet , handleUpdatePopup , handleViewPopup , ha
                         if (cardType === "field"){
                             return <FieldCard fieldData={cardData as Field} handleUpdateFieldPopup={handleUpdatePopup as (data : Field) => void} handleViewFieldPopup={handleViewPopup as (data : Field) => void} handleDeleteField={ handleDeletePopup as (id : string) => void} />
                         } else if (cardType === "crop"){
-                            return <CropCard cropData={cardData as Crop} />
+                            return <CropCard cropData={cardData as Crop} handleUpdateCropPopup={handleUpdatePopup as (data : Crop) => void} handleViewCropPopup={handleViewPopup as (data : Crop) => void} handleDeleteCrop={ handleDeletePopup as (id : string) => void}  />
                         } else {
                             return <LogCard cropDetail={cardData as Log} />
                         }

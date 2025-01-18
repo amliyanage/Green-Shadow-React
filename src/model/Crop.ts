@@ -5,7 +5,7 @@ export class Crop {
     cropSeason: string;
     cropType: string;
     cropImage: File | null;
-    assignStaff: string;
+    assignField: string;
 
     constructor(cropCode: string, cropName: string, cropScientificName: string, cropSeason: string, cropType: string, cropImage: File , assignStaff : string) {
         this.cropCode = cropCode;
@@ -14,6 +14,6 @@ export class Crop {
         this.cropSeason = cropSeason;
         this.cropType = cropType;
         this.cropImage = cropImage;
-        this.assignStaff = assignStaff;
+        this.assignField = assignStaff;
     }
 }
