@@ -4,9 +4,12 @@ import style from '../../css/components/cards/LogCard.module.css'
 
 interface LogCardProps {
     cropDetail: Log
+    handleUpdateLog : (data : Log) => void;
+    handleViewLog : (data : Log) => void;
+    handleDeleteLog : (id : string) => void;
 }
 
-const LogCard = ({ cropDetail } : LogCardProps) => {
+const LogCard = ({ cropDetail , handleDeleteLog , handleViewLog , handleUpdateLog } : LogCardProps) => {
     return (
         <>
             <div className={`p-3 bg-white shadow rounded-4 ${style.logCard}`}>
@@ -33,7 +36,7 @@ const LogCard = ({ cropDetail } : LogCardProps) => {
                     <div
                         className="d-flex align-items-center gap-3 action justify-content-center"
                     >
-                        <svg data-id="${cropDetail.logCode}"
+                        <svg onClick={() => handleUpdateLog(cropDetail)}
                              xmlns="http://www.w3.org/2000/svg"
                              width="16"
                              height="22"
@@ -45,7 +48,7 @@ const LogCard = ({ cropDetail } : LogCardProps) => {
                                 fill="#9A9A9A"
                             />
                         </svg>
-                        <svg data-id="${cropDetail.logCode}"
+                        <svg onClick={() => handleDeleteLog(cropDetail.logCode)}
                              xmlns="http://www.w3.org/2000/svg"
                              width="16"
                              height="19"
@@ -57,7 +60,7 @@ const LogCard = ({ cropDetail } : LogCardProps) => {
                                 fill="#9A9A9A"
                             />
                         </svg>
-                        <svg data-id="${cropDetail.logCode}"
+                        <svg onClick={() => handleViewLog(cropDetail)}
                              xmlns="http://www.w3.org/2000/svg"
                              width="20"
                              height="14"
