@@ -1,13 +1,15 @@
-import {base64ToImageURL} from "../../util/base64ToImageURL.ts";
 import {dataRefactor} from "../../util/dataRefactor.ts";
 import {Crop} from "../../model/Crop.ts";
 import style from '../../css/components/cards/CropCard.module.css'
 
 interface CropCardProps {
     cropData : Crop
+    handleUpdateCropPopup: (field: Crop) => void;
+    handleViewCropPopup: (field: Crop) => void;
+    handleDeleteCrop: (id:string) => void;
 }
 
-const CropCard = ({cropData} : CropCardProps) => {
+const CropCard = ({cropData,handleUpdateCropPopup,handleViewCropPopup,handleDeleteCrop} : CropCardProps) => {
     return(
         <>
             <div className={`p-3 bg-white shadow rounded-4 ${style.cropCard}`}>
@@ -16,27 +18,27 @@ const CropCard = ({cropData} : CropCardProps) => {
                 >
                     <img
                         className="w-100 h-100"
-                        src={base64ToImageURL(cropData.cropImage)}
+                        src={!cropData.cropImage ? "https://via.placeholder.com/150" : URL.createObjectURL(cropData.cropImage)}
                         alt=""
                     />
                 </div>
                 <div className="d-flex justify-content-between mt-3">
                     <div>
                         <h3>Crop Code</h3>
-                        <h2>${dataRefactor(cropData.cropCode, 17)}</h2>
+                        <h2>{dataRefactor(cropData.cropCode, 17)}</h2>
                     </div>
                     <div>
                         <h3>Crop Season</h3>
-                        <h2>${dataRefactor(cropData.cropSeason, 5)}</h2>
+                        <h2>{dataRefactor(cropData.cropSeason, 5)}</h2>
                     </div>
                 </div>
                 <div className="mt-3 d-flex justify-content-between align-items-center">
                     <div>
                         <h3>Crop Name</h3>
-                        <h2>${dataRefactor(cropData.cropName, 8)}</h2>
+                        <h2>{dataRefactor(cropData.cropName, 8)}</h2>
                     </div>
                     <div className="d-flex align-items-center gap-3 action">
-                        <svg data-id="${crop.cropCode}"
+                        <svg onClick={() => handleUpdateCropPopup(cropData)}
                              xmlns="http://www.w3.org/2000/svg"
                              width="16"
                              height="22"
@@ -48,7 +50,7 @@ const CropCard = ({cropData} : CropCardProps) => {
                                 fill="#9A9A9A"
                             />
                         </svg>
-                        <svg data-id="${crop.cropCode}"
+                        <svg onClick={() => handleDeleteCrop(cropData.cropCode)}
                              xmlns="http://www.w3.org/2000/svg"
                              width="16"
                              height="19"
@@ -60,7 +62,7 @@ const CropCard = ({cropData} : CropCardProps) => {
                                 fill="#9A9A9A"
                             />
                         </svg>
-                        <svg data-id="${crop.cropCode}"
+                        <svg onClick={() => handleViewCropPopup(cropData)}
                              xmlns="http://www.w3.org/2000/svg"
                              width="20"
                              height="14"
