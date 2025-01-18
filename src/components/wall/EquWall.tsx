@@ -8,7 +8,6 @@ import {Equ} from "../../model/Equ.ts";
 import UpdateEquPopup from "../popups/Equ/UpdateEquPopup.tsx";
 import ViewEquPopup from "../popups/Equ/ViewEquPopup.tsx";
 import Swal from "sweetalert2";
-import {deleteVehicle} from "../../store/slices/VehicleSlice.ts";
 import {deleteEqu} from "../../store/slices/EquSlice.ts";
 
 const EquWall = () => {
