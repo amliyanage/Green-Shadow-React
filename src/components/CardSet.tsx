@@ -11,7 +11,7 @@ interface CardSetProps {
     cardSet : Field[] | Crop[] | Log[];
     handleUpdatePopup?: (data: Field | Crop | Log) => void;
     handleViewPopup?: (data: Field | Crop | Log) => void;
-    handleDeletePopup?: (data: Field | Crop | Log) => void;
+    handleDeletePopup?: (id:string) => void;
 }
 
 const CardSet = ({ cardType , cardSet , handleUpdatePopup , handleViewPopup , handleDeletePopup } : CardSetProps) => {
@@ -22,7 +22,7 @@ const CardSet = ({ cardType , cardSet , handleUpdatePopup , handleViewPopup , ha
                 {
                     cardSet.map((cardData) => {
                         if (cardType === "field"){
-                            return <FieldCard fieldData={cardData as Field} handleUpdateFieldPopup={handleUpdatePopup as (data : Field) => void} handleViewFieldPopup={handleViewPopup as (data : Field) => void} handleDeleteField={ handleDeletePopup as (data : Field) => void} />
+                            return <FieldCard fieldData={cardData as Field} handleUpdateFieldPopup={handleUpdatePopup as (data : Field) => void} handleViewFieldPopup={handleViewPopup as (data : Field) => void} handleDeleteField={ handleDeletePopup as (id : string) => void} />
                         } else if (cardType === "crop"){
                             return <CropCard cropData={cardData as Crop} />
                         } else {

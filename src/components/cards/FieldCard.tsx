@@ -6,7 +6,7 @@ interface FieldCardProps {
     fieldData: Field;
     handleUpdateFieldPopup: (field: Field) => void;
     handleViewFieldPopup: (field: Field) => void;
-    handleDeleteField: (field: Field) => void;
+    handleDeleteField: (id:string) => void;
 }
 
 const FieldCard = ( { fieldData , handleUpdateFieldPopup , handleDeleteField , handleViewFieldPopup } : FieldCardProps ) => {
@@ -49,7 +49,7 @@ const FieldCard = ( { fieldData , handleUpdateFieldPopup , handleDeleteField , h
                                 fill="#9A9A9A"
                             />
                         </svg>
-                        <svg onClick={() => handleDeleteField(fieldData)}
+                        <svg onClick={() => handleDeleteField(fieldData.fieldCode)}
                              xmlns="http://www.w3.org/2000/svg"
                              width="16"
                              height="19"

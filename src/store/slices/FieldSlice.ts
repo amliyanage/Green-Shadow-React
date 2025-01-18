@@ -17,6 +17,7 @@ const fieldSlice = createSlice({
             );
         },
         deleteField: (state, action : PayloadAction<string>) => {
+            console.log(action.payload)
             return state.filter((field: Field) => field.fieldCode !== action.payload)
         }
     }
