@@ -7,10 +7,12 @@ import { Log } from "../../model/Log.ts";
 import UpdateCropDetailsPopup from "../popups/CropDetails/UpdateCropDetailsPopup.tsx";
 import {Crop} from "../../model/Crop.ts";
 import {Field} from "../../model/Field.ts";
+import ViewCropDetailsPopup from "../popups/CropDetails/ViewCropDetailsPopup.tsx";
 
 const CropDataWall = () => {
     const [saveLogPopup, setSaveLogPopup] = useState(false);
     const [updateLogPopup, setUpdateLogPopup] = useState(false);
+    const [viewLogPopup, setViewLogPopup] = useState(false);
     const logs = useSelector((state: { log: Log[] }) => state.log);
     const [search, setSearch] = useState("");
     const [filteredLogs, setFilteredLogs] = useState<Log[]>([]);
@@ -27,6 +29,13 @@ const CropDataWall = () => {
         }
     };
 
+    const handleViewLogPopup = (data:Log | Crop | Field) => {
+        if ('logCode' in data && 'cropCodes' in data) {
+            setViewLogPopup((prev) => !prev);
+            setTargetLog(data);
+        }
+    };
+
     useEffect(() => {
         setFilteredLogs(
             logs.filter((log: Log) =>
@@ -39,13 +48,14 @@ const CropDataWall = () => {
         <>
             {saveLogPopup && <SaveCropDetailsPopup closePopupAction={handleSaveLogPopup} />}
             {updateLogPopup && <UpdateCropDetailsPopup closePopupAction={handleUpdateLogPopup} targetLog={targetLog} />}
+            {viewLogPopup && <ViewCropDetailsPopup closePopupAction={handleViewLogPopup} targetLog={targetLog} />}
             <div className="w-100 p-5 bg-transparent" id="staff-wall">
                 <WallHeader
                     title={"Log Management"}
                     addPopupAction={handleSaveLogPopup}
                     searchAction={setSearch}
                 />
-                <CardSet cardType={"log"} cardSet={filteredLogs} handleUpdatePopup={handleUpdateLogPopup} />
+                <CardSet cardType={"log"} cardSet={filteredLogs} handleUpdatePopup={handleUpdateLogPopup} handleViewPopup={handleViewLogPopup} />
             </div>
         </>
     );

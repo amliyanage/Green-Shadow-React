@@ -1,6 +1,5 @@
 export class Log {
     logCode: string
-    cropDate: string
     observedImage: File | null
     logDate: string
     logDetail: string
@@ -10,7 +9,7 @@ export class Log {
 
     constructor(logCode: string, cropDate: string, observedImage: File | null = null, logDate: string, logDetail: string, fieldCodes: string[], cropCodes: string[], staffIds: string[]) {
         this.logCode = logCode
-        this.cropDate = cropDate
+        this.logDate = cropDate
         this.observedImage = observedImage
         this.logDate = logDate
         this.logDetail = logDetail

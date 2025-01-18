@@ -14,16 +14,23 @@ interface SaveCropDetailsPopup {
 
 const SaveCropDetailsPopup = ({ closePopupAction } : SaveCropDetailsPopup) => {
 
+    const setDate = () => {
+        const cropDate = new Date();
+        const formattedDate = cropDate.toLocaleDateString('en-US'); // Output: "01/03/2025"
+        console.log(formattedDate);
+        return formattedDate;
+    }
+
     const [crop, setCrop] = useState<Log>({
         logCode: generateUUID('LOG'),
-        cropDate: new Date().toString(),
+        logDate: setDate() ? setDate() as string : "",
         cropCodes: [],
         logDetail: "",
         fieldCodes: [],
         observedImage: null,
-        logDate: "",
         staffIds: []
     })
+
     const [fieldSet, setFieldSet] = useState<string[]>([])
     const [cropSet, setCropSet] = useState<string[]>([])
     const [staffSet, setStaffSet] = useState<string[]>([])

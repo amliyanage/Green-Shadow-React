@@ -10,6 +10,7 @@ interface LogCardProps {
 }
 
 const LogCard = ({ cropDetail , handleDeleteLog , handleViewLog , handleUpdateLog } : LogCardProps) => {
+    console.log(cropDetail.logDate)
     return (
         <>
             <div className={`p-3 bg-white shadow rounded-4 ${style.logCard}`}>
