@@ -40,10 +40,7 @@ const StaffWall = () => {
             confirmButtonColor: "#d33",
             cancelButtonColor: "#3085d6",
             confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "Cancel",
-            willOpen: () => {
-                document.body.classList.remove('swal2-height-auto');
-            },
+            cancelButtonText: "Cancel"
         }).then((result) => {
             if (result.isConfirmed) {
                 dispatch(deleteStaff(id))
