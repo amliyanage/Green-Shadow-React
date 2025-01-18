@@ -28,7 +28,7 @@
 }
 
 body.swal2-height-auto {
-  height: 97vh !important;
+  height: initial !important;
 }
 
 :root {

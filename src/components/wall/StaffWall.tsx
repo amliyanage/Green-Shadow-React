@@ -31,6 +31,7 @@ const StaffWall = () => {
     }
 
     const  handelDeleteStaff = (id:string) => {
+        document.body.classList.remove('swal2-height-auto');
         Swal.fire({
             title: "Are you sure?",
             text: "Do you want to delete this staff?",
@@ -40,6 +41,9 @@ const StaffWall = () => {
             cancelButtonColor: "#3085d6",
             confirmButtonText: "Yes, delete it!",
             cancelButtonText: "Cancel",
+            willOpen: () => {
+                document.body.classList.remove('swal2-height-auto');
+            },
         }).then((result) => {
             if (result.isConfirmed) {
                 dispatch(deleteStaff(id))
