@@ -9,10 +9,12 @@ import {Log} from "../model/Log.ts";
 interface CardSetProps {
     cardType: string;
     cardSet : Field[] | Crop[] | Log[];
-    handleUpdateFieldPopup?: (data: Field | Crop | Log) => void;
+    handleUpdatePopup?: (data: Field | Crop | Log) => void;
+    handleViewPopup?: (data: Field | Crop | Log) => void;
+    handleDeletePopup?: (data: Field | Crop | Log) => void;
 }
 
-const CardSet = ({ cardType , cardSet , handleUpdateFieldPopup } : CardSetProps) => {
+const CardSet = ({ cardType , cardSet , handleUpdatePopup , handleViewPopup , handleDeletePopup } : CardSetProps) => {
 
     return (
         <>
@@ -20,7 +22,7 @@ const CardSet = ({ cardType , cardSet , handleUpdateFieldPopup } : CardSetProps)
                 {
                     cardSet.map((cardData) => {
                         if (cardType === "field"){
-                            return <FieldCard fieldData={cardData as Field} handleUpdateFieldPopup={handleUpdateFieldPopup as (data : Field) => void} />
+                            return <FieldCard fieldData={cardData as Field} handleUpdateFieldPopup={handleUpdatePopup as (data : Field) => void} handleViewFieldPopup={handleViewPopup as (data : Field) => void} handleDeleteField={ handleDeletePopup as (data : Field) => void} />
                         } else if (cardType === "crop"){
                             return <CropCard cropData={cardData as Crop} />
                         } else {

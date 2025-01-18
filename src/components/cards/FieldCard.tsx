@@ -5,9 +5,11 @@ import style from '../../css/components/cards/FieldCard.module.css'
 interface FieldCardProps {
     fieldData: Field;
     handleUpdateFieldPopup: (field: Field) => void;
+    handleViewFieldPopup: (field: Field) => void;
+    handleDeleteField: (field: Field) => void;
 }
 
-const FieldCard = ( { fieldData , handleUpdateFieldPopup } : FieldCardProps ) => {
+const FieldCard = ( { fieldData , handleUpdateFieldPopup , handleDeleteField , handleViewFieldPopup } : FieldCardProps ) => {
     return(
         <>
             <div className={`p-3 bg-white shadow rounded-4 ${style.fieldCard}`}>
@@ -47,7 +49,7 @@ const FieldCard = ( { fieldData , handleUpdateFieldPopup } : FieldCardProps ) =>
                                 fill="#9A9A9A"
                             />
                         </svg>
-                        <svg data-id="${element.fieldCode}"
+                        <svg onClick={() => handleDeleteField(fieldData)}
                              xmlns="http://www.w3.org/2000/svg"
                              width="16"
                              height="19"
@@ -59,7 +61,7 @@ const FieldCard = ( { fieldData , handleUpdateFieldPopup } : FieldCardProps ) =>
                                 fill="#9A9A9A"
                             />
                         </svg>
-                        <svg data-id="${element.fieldCode}"
+                        <svg onClick={() => handleViewFieldPopup(fieldData)}
                              xmlns="http://www.w3.org/2000/svg"
                              width="20"
                              height="14"
