@@ -11,8 +11,8 @@ const EquSlice = createSlice({
             console.log("awa",action.payload);
             state.push(action.payload);
         },
-        deleteEqu: (state, action: PayloadAction<{ equId: string }>) => {
-            return state.filter((equ) => equ.equId !== action.payload.equId);
+        deleteEqu: (state, action: PayloadAction<string>) => {
+            return state.filter((equ) => equ.equId !== action.payload);
         },
         updateEqu: (state, action: PayloadAction<Equ>) => {
             const index = state.findIndex((equ) => equ.equId === action.payload.equId);

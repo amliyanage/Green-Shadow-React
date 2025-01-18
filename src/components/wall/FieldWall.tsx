@@ -60,9 +60,9 @@ const FieldWall = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 dispatch(deleteField(fieldId))
-                Swal.fire("Deleted!", "Staff has been deleted.", "success");
+                Swal.fire("Deleted!", "Field has been deleted.", "success");
             } else {
-                Swal.fire("Cancelled", "Staff deletion cancelled", "info");
+                Swal.fire("Cancelled", "Field deletion cancelled", "info");
             }
         })
     }
