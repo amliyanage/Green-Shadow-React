@@ -1,4 +1,3 @@
-import {base64ToImageURL} from "../../util/base64ToImageURL.ts";
 import {dataRefactor} from "../../util/dataRefactor.ts";
 import {Log} from "../../model/Log.ts";
 import style from '../../css/components/cards/LogCard.module.css'
@@ -16,18 +15,18 @@ const LogCard = ({ cropDetail } : LogCardProps) => {
                 >
                     <img
                         className="w-100 h-100"
-                        src={base64ToImageURL(cropDetail.observedImage)}
+                        src={!cropDetail.observedImage ? "https://via.placeholder.com/150" : URL.createObjectURL(cropDetail.observedImage)}
                         alt=""
                     />
                 </div>
                 <div className="d-flex justify-content-between mt-3">
                     <div>
                         <h3>Log Code</h3>
-                        <h2>${dataRefactor(cropDetail.logCode, 20)}</h2>
+                        <h2>{dataRefactor(cropDetail.logCode, 20)}</h2>
                     </div>
                     <div>
                         <h3>LOG Date</h3>
-                        <h2>${dataRefactor(cropDetail.logDate, 10)}</h2>
+                        <h2>{dataRefactor(cropDetail.logDate, 10)}</h2>
                     </div>
                 </div>
                 <div className="mt-3">

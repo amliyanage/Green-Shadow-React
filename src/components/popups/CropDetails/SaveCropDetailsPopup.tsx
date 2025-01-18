@@ -16,7 +16,7 @@ const SaveCropDetailsPopup = ({ closePopupAction } : SaveCropDetailsPopup) => {
 
     const [crop, setCrop] = useState<Log>({
         logCode: generateUUID('LOG'),
-        cropDate: "",
+        cropDate: new Date().toString(),
         cropCodes: [],
         logDetail: "",
         fieldCodes: [],
