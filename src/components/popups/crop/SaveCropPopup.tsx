@@ -43,6 +43,7 @@ const SaveCropPopup = ({closePopupAction} :SaveCropProps) => {
         try {
             dispatch(addCrop(crop));
             toast.success("Crop saved successfully.");
+            setCrop({...crop, cropCode: generateUUID('CROP')});
         }catch (e) {
             console.error(e);
         }

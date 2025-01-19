@@ -108,7 +108,7 @@ const SaveField = ({ closePopupAction }: SaveFieldProps) => {
         try {
             dispatch(saveField(field));
             toast.success('Field saved successfully');
-            closePopupAction();
+            setField({...field, fieldCode: generateUUID('FIELD')});
         } catch (error) {
             console.error(error);
             toast.error('Failed to save the field. Please try again.');

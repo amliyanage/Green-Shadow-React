@@ -40,6 +40,7 @@ const SaveEquPopup = ( {closePopupAction} : AddEquPopupProps ) => {
             console.log(equipment)
             dispatch(saveEqu(equipment))
             toast.success("Equipment saved successfully.")
+            setEquipment({...equipment, equId: generateUUID("EQU")})
         } catch (error) {
             console.error(error)
         }

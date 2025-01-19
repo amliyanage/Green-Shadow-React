@@ -45,6 +45,7 @@ const AddStaffPopup = ({ closePopupAction }: AddStaffPopupProps) => {
         try {
             dispatch(saveStaff(staffMember))
             toast.success("Staff member saved successfully.")
+            setStaffMember({...staffMember, staffId: generateUUID("STAFF")})
         } catch (error) {
             console.error(error)
         }

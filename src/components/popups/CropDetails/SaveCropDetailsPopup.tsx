@@ -84,6 +84,7 @@ const SaveCropDetailsPopup = ({ closePopupAction } : SaveCropDetailsPopup) => {
             crop.staffIds = staffSet
             dispatch(addLog(crop));
             toast.success("Log saved successfully.");
+            setCrop({...crop, logCode: generateUUID('LOG')});
         }catch (e) {
             console.error(e);
         }
