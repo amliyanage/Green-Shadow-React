@@ -21,7 +21,7 @@ Green Shadow React is built with the following technologies:
 - **React.js**: A JavaScript library for building dynamic user interfaces.
 - **CSS3**: For responsive and visually appealing designs.
 - **HTML5**: Semantic and accessible markup.
-- **Other dependencies**: (Feel free to add any specific libraries or frameworks you used, such as Axios, Redux, or TailwindCSS.)
+- **Other dependencies**: (Feel free to add any specific libraries or frameworks you used, such as Toast, Redux, Char.js , Google Map API , or Bootstrap.)
 
 ---
 
