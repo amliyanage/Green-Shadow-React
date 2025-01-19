@@ -2,7 +2,7 @@ import registerImage from "../assets/registerPageImg.png"
 import logo from "../assets/logo.png"
 import '../css/Pages/RegisterPage.css'
 import {Link} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {User} from "../model/User.ts";
 import {addUser} from "../store/slices/userSlice.ts";
@@ -14,6 +14,15 @@ const RegisterPage = () => {
     const [type, setType] = useState("");
     const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        const element = document.querySelector("body > div");
+
+        if (element && element instanceof HTMLElement) {
+            element.style.width = "75%";
+            element.style.height = "80%";
+        }
+    }, []);
 
     const register = () => {
 

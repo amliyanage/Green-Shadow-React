@@ -81,14 +81,16 @@ const NavigationBar = () => {
                 ))}
             </div>
             <div>
-                <img
-                    className="log-out-btn h-auto"
-                    src={log_out}
-                    onMouseEnter={() => handleMouseEnter('log-out-btn')}
-                    onMouseLeave={handleMouseLeave}
-                    onClick={() => handleClick('log-out-btn')}
-                    alt="log out icon"
-                />
+                <Link to={"/"}>
+                    <img
+                        className="log-out-btn h-auto"
+                        src={log_out}
+                        onMouseEnter={() => handleMouseEnter('log-out-btn')}
+                        onMouseLeave={handleMouseLeave}
+                        onClick={() => handleClick('log-out-btn')}
+                        alt="log out icon"
+                    />
+                </Link>
             </div>
         </div>
     );
