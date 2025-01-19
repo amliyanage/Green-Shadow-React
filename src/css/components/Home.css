@@ -39,6 +39,12 @@
     height: 67vh; /* Adjust this if necessary */
 }
 
+#home-page #vehicleChart , #home-page #equipmentChart {
+    background: transparent;
+    height: 53vh !important;
+    width: 90% !important;
+}
+
 #home-page .charts #vehicleChart , .charts #equipmentChart {
     width: 100%; /* Ensure it uses full width of its grid cell */
     max-height: 60vh; /* Restrict max size of the chart */
