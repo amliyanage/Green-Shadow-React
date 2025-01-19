@@ -8,7 +8,6 @@ Welcome to **Green Shadow React**! 🎉 This is a modern, lightweight, and respo
 
 - 🌍 **Eco-centric design**: Focused on green energy and sustainability.
 - ⚡ **Built with React**: Taking advantage of React’s powerful component-based architecture for flexibility and performance.
-- 📱 **Responsive UI**: Fully optimized for all devices—desktop, tablet, and mobile.
 - 🔥 **Modern Tech Stack**: Incorporates the latest web development standards and practices.
 - 💡 **Customizable components**: Reusable and easy-to-integrate components for rapid development.
 
