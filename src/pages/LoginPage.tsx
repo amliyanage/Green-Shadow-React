@@ -2,7 +2,7 @@ import '../css/Pages/LoginPage.css'
 import logo from '../assets/logo.png'
 import loginPageImg from '../assets/loginPageImg.png'
 import {Link, useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {loginUser} from "../store/slices/userSlice.ts";
 import {toast} from "react-toastify";
@@ -15,6 +15,15 @@ const LoginPage = () => {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+
+    useEffect(() => {
+        const element = document.querySelector("body > div");
+
+        if (element && element instanceof HTMLElement) {
+            element.style.width = "75%";
+            element.style.height = "80%";
+        }
+    }, []);
 
     const togglePassword = () => {
         setIsPasswordVisible(!isPasswordVisible);
